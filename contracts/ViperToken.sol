@@ -1,13 +1,13 @@
 // This should have been deployed to Remix
 // We will be using Solidity version 0.5.3
-pragma solidity 0.5.3;
+pragma solidity >=0.5.3 <=0.8.0;
 // Importing OpenZeppelin's ERC-721 Implementation
-import 'https://github.com/OpenZeppelin/openzeppelin-solidity/contracts/token/ERC721/ERC721Full.sol';
+import 'https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/token/ERC721/ERC721.sol';
 // Importing OpenZeppelin's SafeMath Implementation
-import 'https://github.com/OpenZeppelin/openzeppelin-solidity/contracts/math/SafeMath.sol';
+import 'https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/utils/math/SafeMath.sol';
 
 
-contract ViperToken is ERC721Full {
+contract ViperToken is ERC721 {
     using SafeMath for uint256;
     // This struct will be used to represent one viper
     struct Viper {
@@ -29,11 +29,11 @@ contract ViperToken is ERC721Full {
     );
 
     // Initializing an ERC-721 Token named 'Vipers' with a symbol 'VPR'
-    constructor() ERC721Full("Vipers", "VPR") public {
+    constructor() ERC721("Vipers", "VPR") public {
     }
 
     // Fallback function
-    function() external payable {
+    fallback() external payable {
     }
 
     /** @dev Function to determine a viper's characteristics.
@@ -68,12 +68,14 @@ contract ViperToken is ERC721Full {
     {
         require(viperOwner != address(0));
         uint8 newGenes = generateViperGenes(matron, sire);
+        uint256 newViperId;
         Viper memory newViper = Viper({
             genes: newGenes,
             matronId: matron,
             sireId: sire
         });
-        uint256 newViperId = vipers.push(newViper).sub(1);
+        vipers.push(newViper);
+        newViperId = vipers.length;
         super._mint(viperOwner, newViperId);
         emit Birth(
             viperOwner,
