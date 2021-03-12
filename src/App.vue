@@ -84,7 +84,7 @@ import Viper5 from './assets/Viper/5.png';
 import Viper6 from './assets/Viper/6.png';
 import ViperX from './assets/Viper/unknown.png';
 
-const contractAddress = '0xf59c4c3c79071d3e11034a9344789b9d185e3dd3';
+const contractAddress = '0x4A83bbBcc45e194e98440D62A511eFdf5aaABAC9';
 const vipersMap = [null, Viper1, Viper2, Viper3, Viper4, Viper5, Viper6];
 
 export default {
