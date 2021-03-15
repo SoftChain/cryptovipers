@@ -119,7 +119,7 @@ export default {
       this.isLoading = true;
       this.contractInstance.methods.buyViper().send({
         from: this.account,
-        value: web3.toWei(0.02, 'ether'),
+        value: web3.utils.toWei(0.02, 'ether'),
       }).then((receipt) => {
         this.addViperFromReceipt(receipt);
         this.isLoading = false;
@@ -132,7 +132,7 @@ export default {
       this.isLoading = true;
       this.contractInstance.methods.breedVipers(this.matron, this.sire).send({
         from: this.account,
-        value: web3.toWei(0.05, 'ether'),
+        value: web3.utils.toWei(0.05, 'ether'),
       }).then((receipt) => {
         this.addViperFromReceipt(receipt);
         this.isLoading = false;
