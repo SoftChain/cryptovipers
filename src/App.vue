@@ -2,24 +2,24 @@
   <b-container class="mb-5">
     <b-row class="header-row">
       <b-col>
-        <h1>CryptoVipers</h1>
-        <p>Collect and breed digital vipers.</p>
+        <h1>Butter Battle</h1>
+        <p>Bake Your Bread.</p>
       </b-col>
     </b-row>
 
     <b-row>
       <b-col class="action-container text-center">
-        <h4>Buy a random Viper</h4>
+        <h4>Buy a random bread</h4>
         <img :src="unknownViperImg" class="unknown-viper">
         <b-button type="button" v-on:click="buyViper()">Buy</b-button>
-        <p>Each Viper costs 0.02 Ether</p>
+        <p>Each Bread costs 0.02 Ether</p>
       </b-col>
       <b-col cols="2" class="middle-container">
         <img v-if="isLoading" src="https://media.giphy.com/media/2A6xoqXc9qML9gzBUE/giphy.gif">
         <h3 v-if="!isLoading">or</h3>
       </b-col>
       <b-col class="action-container">
-        <h4>Breed two of the Vipers you own to make a new one!</h4>
+        <h4>Breed two of the Bread you own to make a new one!</h4>
         <b-form>
           <b-form-group id="matron"
                         label="Matron ID:"
@@ -39,18 +39,18 @@
                           placeholder="Enter Sire ID">
             </b-form-input>
           </b-form-group>
-          <b-button v-on:click="breedVipers" type="button">Breed Vipers</b-button>
-          <p>Breeding Vipers cost 0.05 Ether</p>
+          <b-button v-on:click="breedVipers" type="button">Breed Bread</b-button>
+          <p>Breeding Breads cost 0.05 Ether</p>
         </b-form>
       </b-col>
     </b-row>
 
     <hr>
-    <h2 class="mb-5">Owned Vipers</h2>
+    <h2 class="mb-5">Owned Breads</h2>
 
     <b-row v-if="vipers.length == 0">
       <b-col>
-        <h2>No Vipers owned yet!</h2>
+        <h2>No Breads owned yet!</h2>
       </b-col>
     </b-row>
 
